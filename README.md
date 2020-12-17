@@ -1,4 +1,4 @@
-<p align=center> PHP Checker Logins
+<p align=center> Check a list of Logins 😇
 
 ![checkerphp-min](https://user-images.githubusercontent.com/67064886/88514566-b543a080-cfc0-11ea-84cf-797789486875.gif)
 ![responsive](https://user-images.githubusercontent.com/47280551/68560216-deb2a100-041e-11ea-808a-4a803364358c.png)
@@ -40,8 +40,8 @@ Just import the file database.sql 😎
  
 <br><br>
 
-## ✋  Atenção
-#### O mal uso desse programa não é de minha responsabilidade, o objetivo é apenas educacional, não sou responsável pelo seus atos.  
+## ✋  Attention
+#### Misuse of this program is not my responsibility, the goal is only educational, I am not responsible for your actions.
 
 <br><br>
 
