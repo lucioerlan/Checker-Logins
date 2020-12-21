@@ -2,8 +2,7 @@
 error_reporting(0);
 session_start();
 
-if (isset($_SESSION['user_id']))
-{
+if (isset($_SESSION['user_id'])) {
     header("Location: ../index.php");
 }
 
@@ -18,15 +17,12 @@ if (!empty($_POST['email']) && !empty($_POST['password'])):
 
     $message = '';
 
-    if (count($results) > 0 && password_verify($_POST['password'], $results['password']))
-    {
+    if (count($results) > 0 && password_verify($_POST['password'], $results['password'])) {
 
         $_SESSION['user_id'] = $results['id'];
         header("Location: ../index.php");
 
-    }
-    else
-    {
+    } else {
         $message = '<br>E-MAIL OU SENHA NÃO EXISTEM !';
     }
 
@@ -46,9 +42,8 @@ endif;
     <title>PHP CHECKERS</title>
 
     <!--CDNS-->
-    <link rel="stylesheet" href="https://influenciainvisivel.com.br/arquivos/bootstrap.min.css">
-    <link rel="stylesheet" href="https://influenciainvisivel.com.br/arquivos/theme_dark.css">
-    <link href="https://influenciainvisivel.com.br/arquivos/login.css" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/theme_dark.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
@@ -67,11 +62,11 @@ endif;
 
 
 
-    <?php if(!empty($message)): ?>
+    <?php if (!empty($message)): ?>
     <p>
-        <?= $message ?>
+        <?=$message?>
     </p>
-    <?php endif; ?>
+    <?php endif;?>
 
 
     <center><br>

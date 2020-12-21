@@ -2,24 +2,24 @@
 error_reporting(0);
 session_start();
 
-if( isset($_SESSION['user_id']) ){
-	header("Location: /");
+if (isset($_SESSION['user_id'])) {
+    header("Location: /");
 }
 
 require '../Connection/database.php';
 
 $message = '';
 
-if(!empty($_POST['email']) && !empty($_POST['password'])):
-	$password = $_POST["password"];
+if (!empty($_POST['email']) && !empty($_POST['password'])):
+    $password = $_POST["password"];
     $confirm_password = $_POST["confirm_password"];
-	
-	// Enter the new user in the database
-	$sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
-	$stmt = $conn->prepare($sql);
 
-	$stmt->bindParam(':email', $_POST['email']);
-	$stmt->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT));
+    // Enter the new user in the database
+    $sql = "INSERT INTO users (email, password) VALUES (:email, :password)";
+    $stmt = $conn->prepare($sql);
+
+    $stmt->bindParam(':email', $_POST['email']);
+    $stmt->bindParam(':password', password_hash($_POST['password'], PASSWORD_BCRYPT));
 
     if ($password != $confirm_password):
         $message = '<br>SENHAS NÃO CORRESPONDEM !';
@@ -33,7 +33,6 @@ if(!empty($_POST['email']) && !empty($_POST['password'])):
 
 endif;
 
-
 ?>
 
 <!DOCTYPE html>
@@ -46,9 +45,8 @@ endif;
     <title>PHP CHECKERS</title>
 
     <!--CDNS-->
-    <link rel="stylesheet" href="https://influenciainvisivel.com.br/arquivos/bootstrap.min.css">
-    <link rel="stylesheet" href="https://influenciainvisivel.com.br/arquivos/theme_dark.css">
-    <link href="https://influenciainvisivel.com.br/arquivos/login.css" rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="../assets/css/login.css">
+    <link rel="stylesheet" href="../assets/css/theme_dark.css">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
     </script>
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" />
@@ -64,9 +62,9 @@ endif;
           <!-- End CSS minifier -->
 
 
-    <?php if(!empty($message)): ?>
-    <p><?= $message ?></p>
-    <?php endif; ?>
+    <?php if (!empty($message)): ?>
+    <p><?=$message?></p>
+    <?php endif;?>
 
 
     <center><br>
