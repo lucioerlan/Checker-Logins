@@ -4,18 +4,18 @@ session_start();
 
 require 'Connection/database.php';
 
-if( isset($_SESSION['user_id']) ){
+if (isset($_SESSION['user_id'])) {
 
-	$records = $conn->prepare('SELECT id,email,password FROM users WHERE id = :id');
-	$records->bindParam(':id', $_SESSION['user_id']);
-	$records->execute();
-	$results = $records->fetch(PDO::FETCH_ASSOC);
+    $records = $conn->prepare('SELECT id,email,password FROM users WHERE id = :id');
+    $records->bindParam(':id', $_SESSION['user_id']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
-	$user = NULL;
+    $user = null;
 
-	if( count($results) > 0){
-		$user = $results;
-	}
+    if (count($results) > 0) {
+        $user = $results;
+    }
 
 }
 
@@ -50,7 +50,7 @@ body {background-color: #131417 !important }.avatar {height: 40px;width: 40px;bo
 
 
 
-<?php if( !empty($user) ): ?>
+<?php if (!empty($user)): ?>
 
 
 <body id="mimin" class="dashboard">
@@ -63,7 +63,7 @@ body {background-color: #131417 !important }.avatar {height: 40px;width: 40px;bo
                     <span class="bottom"></span>
                 </div>
                 <ul class="nav navbar-nav navbar-right user-nav">
-                    <li class="user-name"><span> <?= $user['email']; ?> </span>
+                    <li class="user-name"><span> <?=$user['email'];?> </span>
                     </li>
                     <li class="dropdown avatar-dropdown">
                         <img src="assets/img/avatar.jpg" class="img-circle avatar" alt="user name"
@@ -222,7 +222,7 @@ body {background-color: #131417 !important }.avatar {height: 40px;width: 40px;bo
                         <script>
                         window.location.href = "Models/login.php";
                         </script>
-                        <?php endif; ?>
+                        <?php endif;?>
 </body>
 
 </html>
