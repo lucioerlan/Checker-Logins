@@ -4,18 +4,18 @@ session_start();
 
 require '../../Connection/database.php';
 
-if( isset($_SESSION['user_id']) ){
+if (isset($_SESSION['user_id'])) {
 
-	$records = $conn->prepare('SELECT id,email,password FROM users WHERE id = :id');
-	$records->bindParam(':id', $_SESSION['user_id']);
-	$records->execute();
-	$results = $records->fetch(PDO::FETCH_ASSOC);
+    $records = $conn->prepare('SELECT id,email,password FROM users WHERE id = :id');
+    $records->bindParam(':id', $_SESSION['user_id']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
-	$user = NULL;
+    $user = null;
 
-	if( count($results) > 0){
-		$user = $results;
-	}
+    if (count($results) > 0) {
+        $user = $results;
+    }
 
 }
 
@@ -48,7 +48,7 @@ if( isset($_SESSION['user_id']) ){
 
 
     <!-- Start PHP verify -->
-    <?php if( !empty($user) ): ?>
+    <?php if (!empty($user)): ?>
         <body id="mimin" class="dashboard">
 
             <!-- Start: Header -->
@@ -62,7 +62,7 @@ if( isset($_SESSION['user_id']) ){
                         </div>
 
                         <ul class="nav navbar-nav navbar-right user-nav">
-                            <li class="user-name"><span> <?= $user['email']; ?> </span></li>
+                            <li class="user-name"><span> <?=$user['email'];?> </span></li>
                             <li class="dropdown avatar-dropdown">
                                 <img src="../../assets/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
                                 <ul class="dropdown-menu user-dropdown">
@@ -119,7 +119,7 @@ if( isset($_SESSION['user_id']) ){
                                 </ul>
                             </li>
 
-                   
+
                         </ul>
                     </div>
                 </div>
@@ -129,7 +129,7 @@ if( isset($_SESSION['user_id']) ){
                 <div id="responsive">
                     <center>
 
-                        <h1 style="margin: 15px; font-weight: 500; font-family: 'open sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif' font-size: 40px; color: #DADEE0;">CHECKER - DESCOMPLICA
+                        <h1 style="margin: 15px; font-weight: 500; font-family: 'open sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'; font-size: 40px; color: #DADEE0;">CHECKER - DESCOMPLICA
 				   </h1>
 
                         <textarea id="lista" name="lista" rows="12" required="" class="fcbtn btn btn-warning btn-outline btn-1e btn-squared" style="cursor: auto; overflow:auto; width:40%; height:40%; text-align: center; border-radius: 50px;" cols="1" placeholder="E-MAIL|PASS"></textarea>
@@ -320,7 +320,7 @@ if( isset($_SESSION['user_id']) ){
                                     </li>
 
                                     <ul class="nav nav-list tree">
-                                
+
                                     </ul>
                             </div>
                         </div>
@@ -351,7 +351,7 @@ if( isset($_SESSION['user_id']) ){
                             window.location.href = "../../Models/login.php";
                         </script>
 
-                        <?php endif; ?>
+                        <?php endif;?>
 
         </body>
 

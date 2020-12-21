@@ -4,18 +4,18 @@ session_start();
 
 require '../../Connection/database.php';
 
-if( isset($_SESSION['user_id']) ){
+if (isset($_SESSION['user_id'])) {
 
-	$records = $conn->prepare('SELECT id,email,password FROM users WHERE id = :id');
-	$records->bindParam(':id', $_SESSION['user_id']);
-	$records->execute();
-	$results = $records->fetch(PDO::FETCH_ASSOC);
+    $records = $conn->prepare('SELECT id,email,password FROM users WHERE id = :id');
+    $records->bindParam(':id', $_SESSION['user_id']);
+    $records->execute();
+    $results = $records->fetch(PDO::FETCH_ASSOC);
 
-	$user = NULL;
+    $user = null;
 
-	if( count($results) > 0){
-		$user = $results;
-	}
+    if (count($results) > 0) {
+        $user = $results;
+    }
 
 }
 
@@ -39,7 +39,7 @@ if( isset($_SESSION['user_id']) ){
     </head>
 
 
-   
+
      <!-- Start CSS minifier -->
      <style>
      body{background-color:#131417 !important}select{width:0px !important;height:0px !important;background-color:transparent !important;color:transparent !important;border-bottom-color:transparent !important;border:transparent !important}.btn-outline.btn-success:hover{border-color:#27C24C !important;color:#27C24C !important}.btn-outline.btn-danger{border-color:#E74C3C !important;color:#E74C3C !important}.btn-outline.btn-danger:hover{border-color:#E74C3C !important;color:#E74C3C !important}.btn-outline.btn-primary:hover{border-color:#3498DB !important;color:#3498DB !important}.btn-outline.btn-warning{border-color:#F0AD4E !important;color:#fff !important}.btn-outline.btn-warning:hover{border-color:#F0AD4E !important;color:#fff !important}.avatar{height:40px;width:40px;border:4px solid #B22222 !important;margin-top:5px}.input-group-addon,.user-photo,.btn,.cover-v1,.nav-tabs.nav-tabs-v2,.tabs-area,.mail-wrapper,.mail-reply,.panel,.thumbnail,.navbar{-webkit-box-shadow:0 1px 0px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);-moz-box-shadow:0 1px 0px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);-ms-box-shadow:0 1px 0px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);-o-box-shadow:0 1px 0px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);box-shadow:0 1px 0px rgba(0, 0, 0, 0.12), 0 1px 1px rgba(0, 0, 0, 0.24);background-color:#131417 !important}#left-menu .sub-left-menu .tree li{padding:0px;padding-left:10%;background-color:#131417 !important}#left-menu .sub-left-menu .tree li{padding:0px;padding-left:10%;background-color:#131417 !important}#left-menu .sub-left-menu a{color:#fff !important;font-size:16px;font-weight:400;line-height:42px;background-color:#131417 !important}.opener-left-menu{float:left;padding:20px;padding-top:35px;background-color:#131417 !important;padding-bottom:11px;color:#fff !important;cursor:pointer;-webkit-box-shadow:0px 9px 0px 0px #2196F3, 0 -9px 0px 0px #2196F3, 4px 0 15px -4px rgba(0, 0, 0, 0.16), -4px 0 15px -4px rgba(0, 0, 0, 0.12);-moz-box-shadow:0px 9px 0px 0px #2196F3, 0 -9px 0px 0px #2196F3, 4px 0 15px -4px rgba(0, 0, 0, 0.16), -4px 0 15px -4px rgba(0, 0, 0, 0.12);-ms-box-shadow:0px 9px 0px 0px #2196F3, 0 -9px 0px 0px #2196F3, 4px 0 15px -4px rgba(0, 0, 0, 0.16), -4px 0 15px -4px rgba(0, 0, 0, 0.12);-o-box-shadow:0px 9px 0px 0px #2196F3, 0 -9px 0px 0px #2196F3, 4px 0 15px -4px rgba(0, 0, 0, 0.16), -4px 0 15px -4px rgba(0, 0, 0, 0.12);box-shadow:0px 9px 0px 0px #131417, 0 -9px 0px 0px #131417, 4px 0 15px -4px rgba(0, 0, 0, 0.16), -4px 0 15px -4px rgba(0,0,0,0.12)}.opener-left-menu.is-open{padding-top:29px;padding-bottom:17px;background-color:#131417 !important}#left-menu .sub-left-menu{background-color:#131417 !important;left:0;padding-top:50px;z-index:222;width:230px;height:100%;position:fixed;overflow-y:hidden;-webkit-box-shadow:0 2px 5px 0 rgba(239, 235, 235, 0.16), 0 2px 10px 0 rgba(72, 70, 70, 0.12);-moz-box-shadow:0 2px 5px 0 rgba(239, 235, 235, 0.16), 0 2px 10px 0 rgba(72, 70, 70, 0.12);-ms-box-shadow:0 2px 5px 0 rgba(239, 235, 235, 0.16), 0 2px 10px 0 rgba(72, 70, 70, 0.12);-o-box-shadow:0 2px 5px 0 rgba(239, 235, 235, 0.16), 0 2px 10px 0 rgba(72, 70, 70, 0.12);box-shadow:0 2px 5px 0 rgba(239, 235, 235, 0.16), 0 2px 10px 0 rgba(72, 70, 70, 0.12)}#left-menu .sub-left-menu .time h1{font-weight:500;font-family:"open sans","Helvetica Neue",Helvetica,Arial,sans-serif;font-size:70px;text-align:center;color:#fff !important}#left-menu .sub-left-menu .time p{margin-top:-20px;text-align:center;font-size:12px;color:#fff !important}#responsive{margin:70px 0 0 0 !important}
@@ -49,7 +49,7 @@ if( isset($_SESSION['user_id']) ){
 
 
     <!-- Start PHP verify -->
-    <?php if( !empty($user) ): ?>
+    <?php if (!empty($user)): ?>
         <body id="mimin" class="dashboard">
 
             <!-- Start: Header -->
@@ -63,7 +63,7 @@ if( isset($_SESSION['user_id']) ){
                         </div>
 
                         <ul class="nav navbar-nav navbar-right user-nav">
-                            <li class="user-name"><span> <?= $user['email']; ?> </span></li>
+                            <li class="user-name"><span> <?=$user['email'];?> </span></li>
                             <li class="dropdown avatar-dropdown">
                                 <img src="../../assets/img/avatar.jpg" class="img-circle avatar" alt="user name" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true" />
                                 <ul class="dropdown-menu user-dropdown">
@@ -129,7 +129,7 @@ if( isset($_SESSION['user_id']) ){
                 <div id="responsive">
                     <center>
 
-                        <h1 style="margin: 15px; font-weight: 500; font-family: 'open sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif' font-size: 40px; color: #DADEE0;">CHECKER - CENTAURO
+                        <h1 style="margin: 15px; font-weight: 500; font-family: 'open sans', 'Helvetica Neue', 'Helvetica', 'Arial', 'sans-serif'; font-size: 40px; color: #DADEE0;">CHECKER - CENTAURO
 				   </h1>
 
                         <textarea id="lista" name="lista" rows="12" required="" class="fcbtn btn btn-warning btn-outline btn-1e btn-squared" style="cursor: auto; overflow:auto; width:40%; height:40%; text-align: center; border-radius: 50px;" cols="1" placeholder="E-MAIL|PASS"></textarea>
@@ -140,7 +140,7 @@ if( isset($_SESSION['user_id']) ){
                         <span style="outline: none; overflow:auto; color: #FFF; resize:none;  color: #E74C3C; text-align: center;">Reprovadas: </span> <span class="badge badge-danger" id="rp">0</span>
                         <span style="outline: none; overflow:auto; color: #FFF; resize:none;  color: #F39C12; text-align: center;">Testadas: </span> <span class="badge badge-warning" id="total">0</span><br><br>
                         <input id="botao" type="button" style=" width:20%; height:20%; color: #3498DB;" class="fcbtn btn btn-primary btn-outline btn-1e btn-squared" onclick="enviar();" value="START" />
-                      
+
                         <br><select id="CHECKER" name="CHECKER">
                             <option name="checker" value="api.php" style="text-align: center;">checker</option>
                         </select>
@@ -319,7 +319,7 @@ if( isset($_SESSION['user_id']) ){
                                     </li>
 
                                     <ul class="nav nav-list tree">
-                  
+
                                     </ul>
                             </div>
                         </div>
@@ -350,7 +350,7 @@ if( isset($_SESSION['user_id']) ){
                             window.location.href = "../../Models/login.php";
                         </script>
 
-                        <?php endif; ?>
+                        <?php endif;?>
 
         </body>
 
